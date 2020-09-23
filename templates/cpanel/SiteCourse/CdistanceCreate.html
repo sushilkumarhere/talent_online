@@ -1,0 +1,41 @@
+{% extends "cpanel/Cbase.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block mainblock %}
+<html>
+<head>
+    <title>Course Create</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+ <div id="page-content">
+     <div class="block full">
+                  <div class="block-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h1>Manage <b>Setting</b></h1>
+                                </div>
+                            </div>
+                  </div>
+        <center>
+    <h3 class="display-3" >Create New Course</h3>
+    <form method = 'POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class = 'w-50 table table-light' >
+            {% for field in upload_form %}
+            <tr>
+                <th>{{field.label}}</th>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-lg btn-warning">Submit</button>
+    </form>
+</center>
+
+    </div>
+ </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <h3 class="text-center">Course Details</h3>
+
+<div style="background-color:#cccccc;" class="container">
+
+<table  class="table table-bordered">
+
+    <thead>
+      <tr>
+        <th scope="col">Course Name </th>
+        <th scope="col">Eligibility </th>
+        <th scope="col">Course Duration Minimum </th>
+        <th scope="col">Course Duration Minimum </th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for course_list in course %}
+      <tr>
+
+       <td>{{ course_list.CourseName }}</td> <td>{{ course_list.Eligibility }} </td> <td>{{ course_list.CourseDuration_min }} </td>>
+          <td>{{ course_list.CourseDuration_max }}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+</body>
+
+{% endblock content %}
+</html>

@@ -1,0 +1,46 @@
+{% extends "cpanel/Cbase.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block mainblock %}
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Books App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color:#4DB6AC;">
+
+{% block content %}
+<div class="row">
+     <div class="col-sm-6">
+          <h2>Upload Courses </h2>
+     </div>
+    <div class="col-sm-6">
+         <a href="{% url 'CourseCreate' %}" class="btn btn-outline-success" type="button" data-toggle="tooltip"
+         data-placement="top" title="Add Course"><i class="fa fa-table"></i>Add New</a>
+
+    </div>
+</div>
+<div class="card-deck">
+ {% for book in cr %}
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{ book.CourseImage.url }}">
+  <div class="card-body">
+    <h1 class="card-title">{{ book.CourseName }}</h1>
+
+    <p class="card-text">{{ book.CourseDetail }}</p>
+   <div class="card-footer bg-transparent border-dark">
+       <h2 class="card-title">{{book.Eligibility}} </h2>
+   <center>
+       <a href="{% url 'CourseUpdate' book.id %}" class="btn btn-warning" id = '{{book.id}}'>edit</a>
+       <a href="{% url 'CourseDelete' book.id %}" class="btn btn-danger" id = '{{book.id}}'>delete</a>
+    </center>
+    </div>
+  </div>
+</div>
+ {% endfor %}
+</div>
+ {% endblock %}
+</body>
+</html>
+{% endblock %}

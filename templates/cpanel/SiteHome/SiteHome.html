@@ -1,0 +1,70 @@
+{% extends "cpanel/Cbase.html" %}
+{% load static %}
+{% block mainblock %}
+<!-- Page content -->
+                    <div id="page-content">
+
+                        <!-- Datatables Content -->
+                        <div class="block full">
+
+      <div class="block-title">
+				<div class="row">
+					<div class="col-sm-6">
+						<h2>Manage <b>Setting</b></h2>
+					</div>
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <a href="{% url 'SiteUpload' %}" class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                       data-placement="top" title="Add"><i class="fa fa-table"></i>Add New</a>
+                </div>
+
+
+				</div>
+      </div>
+                            <div class="table-responsive">
+                                <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">ID</th>
+                                            <th> logo</th>
+                                            <th>Firm Name</th>
+                                            <th>Mission</th>
+
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                                {% for ss in site_set1 %}
+                                    <tr>
+                                            <td class="text-center">{{ ss.id }}</td>
+                                            <td class="text-center"><img src="{% static "admin_main/img/placeholders/avatars/avatar15.jpg" %}" alt="avatar" class="img-circle"></td>
+                                            <td>{{ ss.Firm }}</td>
+                                            <td>{{ ss.main_slider_mission }}</td>
+
+                                            <td class="text-center">
+
+                                            <ul class="list-inline m-0">
+                                                <li class="list-inline-item">
+                                                     <a href="{% url 'UpdateSiteS' ss.id %}" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="{% url 'DeleteSiteS' ss.id %}" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                                                </li>
+                                            </ul>
+
+
+                                            </td>
+                                        </tr>
+
+                                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}
+
+{% block footerblock %}
+          <!-- Content Goes here -->
+{% endblock %}

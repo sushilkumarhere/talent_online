@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+<!-- About Text -->
+<section class="header1 cid-qxyWY3CmNn mbr-parallax-background" id="header1-6" data-rv-view="99">
+
+    <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(104, 184, 29);">
+    </div>
+        <div class="row justify-content-md-center">
+            <div class="mbr-green col-md-10">
+                <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">
+                    About Us</h1>
+                <p class="mbr-text align-center pb-3 mbr-fonts-style display-5">
+                     {{ about1.about }}
+                </p>
+            </div>
+        </div>
+</section>
+
+
+<!-- Services Section -->
+
+<section class="features3 cid-rbmdr8RGdl" id="features3-3">
+    <h2 class="mbr-fonts-style mb-4 align-center display-2">Our Services</h2>
+        <div class="card-deck">
+            {% for ser in cr %}
+            <div class="card" style="width: 15rem;">
+                <img class="card-img-top" src="{{ ser.image.url }}">
+                <div class="card-body">
+                    <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">
+                         {{ ser.title }} </h1>
+                  <p class="card-text">{{ser.content}} </p>
+                  <div class="card-footer bg-transparent border-dark"> </div>
+
+
+
+
+
+
+
+                  <a href="{% url 'register' %}" class="btn btn-success" id = '{{ser.id}}'>Enroll</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</section>
+
+<!-- Contact US images Section -->
+
+
+<!-- Clients Feedback Section -->
+<section class="testimonials2 cid-rbmiuAiwEp" id="testimonials2-d">
+    <div class="container">
+        <h2 class="mbr-fonts-style mb-3 align-center display-2">What Our Clients Say</h2>
+        <div class="row justify-content-center pt-2">
+            <div class="card col-12 col-md-6">
+                <div class="card-box">
+                    <div class="card-header">
+                        <div class="card-img">
+                            <img src= "{% static "assets/images/face1.jpg" %}" alt="Mobirise">
+                        </div>
+                        <h4 class="card-title mbr-fonts-style align-center mb-0 mbr-white display-5">
+                            Jared</h4>
+                    </div>
+                    <p class="mbr-text card-text mbr-fonts-style align-left m-0 display-7">
+                        Thank you for your help! We couldn't do anything without you. It was a great pleasure to work with you.</p>
+                </div>
+            </div>
+            <div class="card col-12 col-md-6">
+                <div class="card-box">
+                    <div class="card-header">
+                        <div class="card-img">
+                            <img src="{% static "assets/images/jassica-120x120.jpg" %}" alt="Mobirise" title="">
+                        </div>
+                        <h4 class="card-title mbr-fonts-style align-center mb-0 mbr-white display-5">
+                            Jessica</h4>
+                    </div>
+                        <p class="mbr-text card-text mbr-fonts-style align-left m-0 display-7">
+                        Awesome Experience! you're a great helper. I recommended you to all my friends!</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+
+<section class="form1 cid-rbmkSiAkp2" id="form1-e">
+    <div class="container">
+        <h2 class="mbr-fonts-style mb-4 align-center display-2">Contact Us</h2>
+        <div class="row main-row justify-content-center">
+            <div class="col-sm-12 col-lg-8 col-md-6">
+                <form action '{% url 'about'}' method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row input-main">
+                        <div class="col-md-12 col-lg-6 input-wrap" data-for="firstname">
+                            <input type="text" class="field display-7" name="firstname" placeholder="First Name" data-form-field="First Name" required="" id="firstname-form1-e">
+                        </div>
+                        <div class="col-md-12 col-lg-6 input-wrap" data-for="lastname">
+                            <input type="text" class="field display-7" name="lastname" data-form-field="Last Name" placeholder="Last Name" required="" id="Lastname-form1-e">
+                        </div>
+                        <div class="col-md-12 col-lg-6 input-wrap" data-for="email">
+                            <input type="email" class="field display-7" name="email" data-form-field="Email" placeholder="Email" required="" id="email-form1-e">
+                        </div>
+                        <div class="col-md-12 col-lg-6 input-wrap" data-for="Phone">
+                            <input type="number" class="field display-7" name="phone" data-form-field="phone" placeholder="Phone" required="" id="phone-form1-e">
+                        </div>
+                    </div>
+                    <div class="row input-main">
+                        <div class="col-md-12 col-lg-12 form-group" data-for="message">
+                            <textarea type="text" class="form-control display-7" name="message" rows="7" data-form-field="Message" placeholder="Message" required="" id="message-form1-e"></textarea>
+                        </div>
+                    </div>
+                    <div class="row input-main">
+                        <div class="col-md-12 col-lg-12 btn-row">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-form btn-primary display-4">SEND</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Address Section -->
+
+            <div class="col-sm-12 col-lg-4 col-md-6 text-block">
+                <div class="content-panel">
+                    <img src="{% static "img/contact-image.png" %}" alt="My image">
+				<h2>Contact Us</h2>
+				<h6>{{ cont_us.Address1 }} </h6>
+             	<h6>{{ cont_us.Address2 }}</h6>
+        		<h6>{{ cont_us.Distt }}( {{ cont_us.pin }} )</h6>
+				 <h8>E-Mail : {{ cont_us.Email }}</h8> <br>
+            	 <h8>Phone No : {{ cont_us.Phone }} </h8>
+                </div>
+            </div>
+        </div>
+   </div>
+</section>
+{% endblock content %}
+</body>
+</html>

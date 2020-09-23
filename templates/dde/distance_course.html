@@ -1,0 +1,46 @@
+<html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+<!-- About Text -->
+<section class="header1 cid-qxyWY3CmNn mbr-parallax-background" id="header1-6" data-rv-view="99">
+
+    <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(104, 184, 29);">
+    </div>
+        <div class="row justify-content-md-center">
+            <div class="mbr-green col-md-10">
+                <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">
+                    Our Courses</h1>
+                <p class="mbr-text align-center pb-3 mbr-fonts-style display-5">
+                     Distance Education “is a process to create and provide access to learning when the
+                    source of information and the learners are separated by time and distance, or both.”
+                    In other words, distance learning is the process of creating an educational experience
+                    of equal qualitative value for the learner to best suit their needs outside the classroom.
+                </p>
+            </div>
+        </div>
+</section>
+
+<!-- Course Detail -->
+
+
+<section class="features4 cid-rbmdr8RGdl" id="features3-3">
+    <div class="card-deck">
+ {% for book in cr %}
+    <div class="card" style="width: 15rem;">
+        <img class="card-img-top" src="{{ book.CourseImage.url }}">
+ <div class="card-body">
+     <div class="card-title">  {{ book.CourseName }}</div>
+     <p class="card-text">  Eligibility : {{book.Eligibility}} </p>
+     <div class="card-footer bg-transparent border-dark"> </div>
+     <a href="{% url 'register'  %}" class="btn btn-success" id = '{{book.id}}'>Enroll</a>
+ </div>
+</div>
+ {% endfor %}
+</div>
+</section>
+ {% endblock %}
+</body>
+</html>

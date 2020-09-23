@@ -1,0 +1,139 @@
+<html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+<!-- Default form register -->
+<br>
+<center>
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home1-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Distance Education Program</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Online Course</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
+                                <h4 class="register-heading">Apply as a Applicants of Distance Learning Program</h4> <br>
+
+                                <div class="row register-form">
+
+                                    <div class="col-md-6">
+                                        <form action '{%url 'register1'}' method="post" enctype="multipart/form-data">
+					                    {% csrf_token %}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="Fname" name="Fname" placeholder="First Name *" value="" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="Lname" name="Lname" placeholder="Last Name *" value="" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="Address" name="Address"placeholder="Address 1 *" value="" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="Adhar" name="Adhar" placeholder="Adhar Card No" value="" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline">
+                                                    <input type="radio" name="gender" value="male" checked>
+                                                    <span> Male </span>
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input type="radio" name="gender" value="female">
+                                                    <span>Female </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="Email" name="Email" placeholder="Your Email *" value="" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number"  class="form-control" minlength="10" maxlength="10"  id="Phone" name='Phone' placeholder="Your Phone *" value="" required/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control"  id="Course" name="Course" required>
+                                                <option class="hidden"  disabled selected>Please select your Course </option>
+                                                <option>MBA</option>
+                                                <option>MCA</option>
+                                                <option>MA</option>
+                                                <option>BBA</option>
+                                                <option>BCA</option>
+                                                <option>BA</option>
+                                                <option>Diploma</option>
+                                                <option>Others</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" id="Uni" name="Uni" required>
+                                                <option class="hidden"  selected disabled>Please select University</option>
+                                                <option>Subharti University Meerut</option>
+                                                <option>IEC University Himachal Pradesh</option>
+                                                <option>Jaipur National University Rajasthan</option>
+                                                <option>Others</option>
+
+                                            </select>
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <h3  class="register-heading">Apply as a Hirer</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option class="hidden"  selected disabled>Please select your Course</option>
+                                                <option>9th CBSE</option>
+                                                <option>10th CBSE</option>
+                                                <option>11th CBSE</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Prefer Timing of Batch" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+{% endblock content %}
+</center>
+</body>
+</html>
