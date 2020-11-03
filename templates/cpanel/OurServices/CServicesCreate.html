@@ -1,0 +1,35 @@
+{% extends "cpanel/AdminBase.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block mainblock %}
+<html>
+<body>
+ <div class="col-md-12">
+		<div class="card">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <h5 class="card-title"> <i class="fa fa-plus"></i>Add New Services</h5>
+                            </div>
+                        </div>
+			<div class="card-body">
+
+
+
+                    <form method = 'POST' enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <table class = 'w-50 table table-light' >
+                            {% for field in upload_form %}
+                            <tr>
+                                <th>{{field.label}}</th>
+                                <td>{{ field }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        <button type="submit" class="btn btn-lg btn-warning">Submit</button>
+                    </form>
+            </div>
+        </div>
+ </div>
+</body>
+</html>
+{% endblock %}

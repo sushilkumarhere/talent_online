@@ -1,21 +1,33 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from .forms import sitecreate, course_create, service_create
+from .forms import sitecreate, course_create, service_create,Contactus_create
 from .models import Post, AboutUs, SiteSetting, ContactUs, user_register, registrations, Course, services
 from django.shortcuts import render, get_object_or_404, redirect
 from mysite.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
 from django.contrib.auth import logout
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.db import IntegrityError
 
 # this is the Blog post List View
 def PostList(request):
     post_list = Post.objects.filter(status=1).order_by('-created_on')
     site_sett = SiteSetting.objects.all()
     cont = ContactUs.objects.get(pk=1)
-    choices = {'post_list': post_list, 'site_sett': site_sett, 'cont_us': cont}
-    return render(request, 'index.html', choices)
+    service = services.objects.all()
+    choices = {'post_list': post_list, 'site_sett': site_sett, 'cont_us': cont,'cr': service}
+    return render(request, 'home.html', choices)
 
+
+
+def blog(request):
+    post_list = Post.objects.filter(status=1).order_by('-created_on')
+    site_sett = SiteSetting.objects.all()
+    cont = ContactUs.objects.get(pk=1)
+    service = services.objects.all()
+    choices = {'post_list': post_list, 'site_sett': site_sett, 'cont_us': cont,'cr': service}
+    return render(request, 'Blogs.html', choices)
 
 # this is the Blog post Detail View
 def PostDetail(request, slug):
@@ -25,9 +37,8 @@ def PostDetail(request, slug):
     choices = {'post': post_detail, 'site_sett': site_sett}
     return render(request, template, choices)
 
-
 # this is the About Us Page View
-def about(request):
+def contactus(request):
     if request.method == 'POST':
         fname = request.POST.get('firstname')
         lname = request.POST.get('lastname')
@@ -35,7 +46,7 @@ def about(request):
         recepient = request.POST.get('email')
         message = request.POST.get('message')
         mailto = 'sushilkumar.here@gmail.com'
-        if message == '' or recepient == '':
+        if message == '' or recepient == '' or phone == '':
             error = "all fields are required mandetory"
             return render(request, 'error.html', {'error': error})
         send_mail('subject', message, EMAIL_HOST_USER, [recepient, mailto], fail_silently=False)
@@ -47,7 +58,7 @@ def about(request):
     abt = AboutUs.objects.get(pk=6)
     service = services.objects.all()
     choices = {'site_sett': site_sett, 'cont_us': cont, 'about1': abt, 'cr': service}
-    return render(request, 'aboutus.html', choices)
+    return render(request, 'contactus.html', choices)
 
 
 # this is the Course Page View
@@ -59,10 +70,6 @@ def Course1(request):
     return render(request, 'dde/course.html', choices)
 
 
-# this is the Login Page View
-@login_required
-def cpanel(request):
-    return render(request, 'cpanel/Chome.html')
 
 
 # this is the Registration Page View
@@ -101,6 +108,36 @@ def distance_edus(request):
     choices = {'site_sett': site_sett, 'cont_us': cont, 'cr': courses}
     return render(request, 'dde/distance_course.html', choices)
 
+
+# this is the App Service Page View
+def service_app(request):
+    site_sett = SiteSetting.objects.all()
+    cont = ContactUs.objects.get(pk=1)
+    choices = {'site_sett': site_sett, 'cont_us': cont}
+    return render(request, 'services/service_app.html', choices)
+
+
+
+def gsmsfeatures(request):
+    site_sett = SiteSetting.objects.all()
+    cont = ContactUs.objects.get(pk=1)
+    choices = {'site_sett': site_sett, 'cont_us': cont}
+    return render(request, 'services/gsmsfeatures.html', choices)
+
+
+
+def usermanual(request):
+    site_sett = SiteSetting.objects.all()
+    cont = ContactUs.objects.get(pk=1)
+    choices = {'site_sett': site_sett, 'cont_us': cont}
+    return render(request, 'services/user_manual.html', choices)
+
+# this is the Login Page View
+@login_required
+def cpanel(request):
+    site_sett = SiteSetting.objects.all()
+    choices = {'site_sett': site_sett}
+    return render(request, 'cpanel/AdminHome.html',choices)
 
 # this is the CPanel Distance Course Page View
 @login_required
@@ -198,12 +235,42 @@ def SiteHomeDelete(request, set_id):
     s.delete()
     return redirect('sites')
 
+@login_required
+def CContactus(request):
+    contact = ContactUs.objects.all()
+
+    return render(request, 'cpanel/ContactUs/CContactus.html', {'cr': contact})
 
 @login_required
-def cabout(request):
+def ContactUs_create(request):
+    upload = Contactus_create()  # form.py
+    if request.method == 'POST':
+        upload = Contactus_create(request.POST, request.FILES)
+        if upload.is_valid():
+            upload.save()
+            return redirect('sites')
+        else:
+            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'CContactus'}}">reload</a>""")
+    else:
+        return render(request, 'cpanel/ContactUs/CContactus_create.html', {'upload_form': upload})
+
+
+
+@login_required
+def ContusUpdate(request, contus_id, template_name='cpanel/ContactUs/CCountactus_update.html'):
+    post = get_object_or_404(ContactUs, pk=contus_id)
+    form = Contactus_create(request.POST or None, instance=post)
+    if form.is_valid():
+        form.save()
+        return redirect('CContactus')
+    return render(request, template_name, {'form': form})
+
+
+@login_required
+def Services(request):
     service = services.objects.all()
 
-    return render(request, 'cpanel/SiteAbout/Cabout.html', {'cr': service})
+    return render(request, 'cpanel/OurServices/CServices.html', {'cr': service})
 
 
 @login_required
@@ -213,20 +280,20 @@ def CreateService(request):
         upload = service_create(request.POST, request.FILES)
         if upload.is_valid():
             upload.save()
-            return redirect('cpanel_about')
+            return redirect('Services')
         else:
-            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'CourseCreate'}}">reload</a>""")
+            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'CreateService'}}">reload</a>""")
     else:
-        return render(request, 'cpanel/SiteAbout/CAboutCreate.html', {'upload_form': upload})
+        return render(request, 'cpanel/OurServices/CServicesCreate.html', {'upload_form': upload})
 
 
 @login_required
-def ServicesUpdate(request, service_id, template_name='cpanel/SiteAbout/CAboutUpdate.html'):
+def ServicesUpdate(request, service_id, template_name='cpanel/OurServices/CServicesUpdate.html'):
     post = get_object_or_404(services, pk=service_id)  # services is a  Model
     form = service_create(request.POST or None, instance=post)
     if form.is_valid():
         form.save()
-        return redirect('cpanel_about')
+        return redirect('Services')
     return render(request, template_name, {'form': form})
 
 
@@ -236,9 +303,41 @@ def ServicesDelete(request, service_id):
     try:
         s = services.objects.get(id=ss_id)  # Service is a  Model
     except Setting.DoesNotExist:
-        return redirect('cpanel_about')
+        return redirect('Services')
     s.delete()
-    return redirect('cpanel_about')
+    return redirect('Services')
+
+
+@login_required
+def UserLeads(request):
+    leads = registrations.objects.all()
+
+    return render(request, 'cpanel/UserLeads.html', {'lds': leads})
+
+
+@login_required
+def NewUsers(request):
+    if request.method == "POST":
+        if request.POST.get('password1') == request.POST.get('password2'):
+            try:
+                saveuser = User.objects.create_user(request.POST.get('username'),
+                                                    password=request.POST.get('password1'))
+                saveuser.save()
+                return render(request, 'cpanel/Users/NewUser.html', {'form': UserCreationForm,
+                                                               'info': 'User ' + request.POST.get(
+                                                                   'username') + ' Create Succesfull'})
+            except IntegrityError:
+                return render(request, 'cpanel/Users/NewUser.html', {'form': UserCreationForm,
+                                                               'info': 'User ' + request.POST.get(
+                                                                   'username') + ' Already Exists !!'})
+        else:
+            return render(request, 'cpanel/Users/NewUser.html',
+                          {'form': UserCreationForm, 'error': 'the password is not match'})
+    else:
+
+        return render(request, 'cpanel/Users/NewUser.html', {'form': UserCreationForm})
+
+
 
 
 def signout(request):
@@ -249,3 +348,5 @@ def signout(request):
 def test(request):
     """ Developer """
     return render(request, 'test.html')
+
+

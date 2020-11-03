@@ -15,9 +15,9 @@
             {% for ss in site_sett %}
             {{ ss.main_slider_mission }}
         </p>
-        <img src="{{ ss.main_slider_img.url }}" alt="My image">
+        <img src="{% static 'assets1/img/slider_img.jpg' %}" alt="My image">
         {% endfor %}
-        <a href="{% url 'about'%}"
+        <a href="#"
            class="btn btn-danger">Know more!</a>
     </div>
 </div>

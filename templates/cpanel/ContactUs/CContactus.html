@@ -1,0 +1,66 @@
+<html>
+{% extends "cpanel/AdminBase.html" %}
+{% load static %}
+{% block mainblock %}
+<!-- Page content -->
+<div class="col-md-12">
+		<div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="card-title">Concat Us</h4>
+                                    <a href="{% url 'Contactus_create' %}" class="btn btn-primary btn-round ml-auto" type="button" data-toggle="tooltip"
+                                        data-placement="top" title="Add Services"><i class="fa fa-plus"></i>Add New Course</a>
+                                </div>
+                            </div>
+			    <div class="card-body">
+
+                            <div class="table-responsive">
+                                <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th> Address 1</th>
+                                            <th>Address 2</th>
+                                            <th>Sate</th>
+                                            <th>District</th>
+                                            <th>Pin</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                                {% for ss in cr %}
+                                    <tr>
+                                            <td class="text-center">{{ ss.Address1 }}</td>
+                                            <td>{{ ss.Address2 }}</td>
+                                            <td>{{ ss.State }}</td>
+                                            <td>{{ ss.Distt }}</td>
+                                            <td>{{ ss.pin }}</td>
+                                            <td>{{ ss.Email }}</td>
+                                            <td>{{ ss.Phone }}</td>
+
+
+                                            <td class="text-center">
+
+                                            <ul class="list-inline m-0">
+                                                <li class="list-inline-item">
+                                                     <a href="{% url 'UpdateContUs' ss.id %}" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="{% url 'DeleteSiteS' ss.id %}" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                                                </li>
+                                            </ul>
+
+
+                                            </td>
+                                        </tr>
+
+                                                {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                </div>
+        </div>
+</div>
+{% endblock %}
+</html>

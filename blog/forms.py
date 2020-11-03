@@ -1,5 +1,5 @@
 from django import forms
-from .models import SiteSetting, Course, services
+from .models import SiteSetting, Course, services, ContactUs
 
 
 # DataFlair
@@ -18,4 +18,10 @@ class course_create(forms.ModelForm):
 class service_create(forms.ModelForm):
     class Meta:
         model = services
+        fields = '__all__'
+
+
+class Contactus_create(forms.ModelForm):
+    class Meta:
+        model = ContactUs
         fields = '__all__'

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/mbr-additional.css' %}">
+<section class="form1 cid-rbmkSiAkp2" id="form1-e">
+
+    <div class="container">
+        <h2 class="mbr-fonts-style mbr-section-title align-center display-2">Feel free to Contact me:</h2>
+            <div class="row main-row justify-content-center">
+                <div class="col-sm-12 col-lg-8 col-md-6">
+                    <form action '{% url 'about'}' method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row input-main">
+                            <div class="col-md-12 col-lg-6 input-wrap" data-for="firstname">
+                                <input type="text" class="field display-7" name="firstname" placeholder="First Name" data-form-field="First Name" required="" id="firstname-form1-e">
+                            </div>
+                            <div class="col-md-12 col-lg-6 input-wrap" data-for="lastname">
+                                <input type="text" class="field display-7" name="lastname" data-form-field="Last Name" placeholder="Last Name" required="" id="Lastname-form1-e">
+                            </div>
+                            <div class="col-md-12 col-lg-6 input-wrap" data-for="email">
+                                <input type="email" class="field display-7" name="email" data-form-field="Email" placeholder="Email" required="" id="email-form1-e">
+                            </div>
+                            <div class="col-md-12 col-lg-6 input-wrap" data-for="Phone">
+                                <input type="number" class="field display-7" name="phone" data-form-field="phone" placeholder="Phone" required="" id="phone-form1-e">
+                            </div>
+                        </div>
+                        <div class="row input-main">
+                            <div class="col-md-12 col-lg-12 form-group" data-for="message">
+                                <textarea type="text" class="form-control display-7" name="message" rows="7" data-form-field="Message" placeholder="Message" required="" id="message-form1-e"></textarea>
+                            </div>
+                        </div>
+                        <div class="row input-main">
+                            <div class="col-md-12 col-lg-12 btn-row">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-form btn-primary display-4">SEND</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Address Section -->
+                <div class="col-sm-12 col-lg-4 col-md-6 text-block">
+                    <div class="content-panel">
+                        <img src="{% static "assets1/img/contact-image.png" %}" alt="My image">
+                    <h4>Contact Us</h4>
+                    <h6>{{ cont_us.Address1 }} </h6>
+                    <h6>{{ cont_us.Address2 }}</h6>
+                    <h6>{{ cont_us.Distt }}( {{ cont_us.pin }} )</h6>
+                     <h8>E-Mail : {{ cont_us.Email }}</h8> <br>
+                     <h8>Phone No : {{ cont_us.Phone }} </h8>
+                    </div>
+                </div>
+            </div>
+   </div>
+</section>
+
+{% endblock content %}
+
+</html>

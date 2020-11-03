@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'blog'
 
-
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,3 +138,4 @@ EMAIL_HOST_PASSWORD = '1980@poonum'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+

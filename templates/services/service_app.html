@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends "base1.html" %}
+{% load static %}
+{% block content %}
+<body>
+
+ <div class="jumbotron"> </div>
+
+
+
+        <div class="container">
+
+                        <div class="jumbotron">
+                              <h2 class="display-6"> <center> Our new Leraning Management System(LMS)</center></h2>
+                              <div class="alert alert-warning" role="alert">
+                                  <p class="lead">Global Multi School Management System</p>
+
+                                    <p>Global Multi School management system (GMSMS) Express is basically used for
+                                  manage educational institution like school, college, universities etc.
+                                  Specially for manage multiple school from one system/server. Please read
+                                  this documentation carefully before starting...
+                                    </p>
+                              </div>
+
+                            <hr class="my-4">
+                                 <img src="{% static 'assets1/img/banner.jpg' %}" style="width: 100%" alt="">
+                            <div class="card-deck">
+                                        <div class="card border-primary mb-3" style="max-width: 22rem;">
+                                          <div class="card-header">Global Multi School Management System</div>
+                                          <div class="card-body text-primary">
+                                              <a class="link" href="http://meraschool.rf.gd"target="_blank">
+                                            <h5 class="card-title">Live Demo</h5>
+                                            <p class="card-text">Easy Installation, Easy Use!</p>
+                                              </a>
+                                          </div>
+                                        </div>
+
+                                        <div class="card border-primary mb-3" style="max-width: 22rem;">
+                                          <div class="card-header">Global Multi School Management System</div>
+                                          <div class="card-body text-primary">
+                                              <a class="link" href="{% url 'gsmsfeatures' %}">
+                                            <h5 class="card-title">Exclusive Features</h5>
+                                            <p class="card-text">Why you should use GMSMS?.</p>
+                                              </a>
+                                          </div>
+                                        </div>
+
+                                        <div class="card border-primary mb-3" style="max-width: 22rem;">
+                                          <div class="card-header">Global Multi School Management System</div>
+                                          <div class="card-body text-primary">
+                                               <a class="link" href="{% url 'usermanual' %}">
+                                            <h5 class="card-title">User Manual</h5>
+                                            <p class="card-text">Global Multi School Management System (GMSMS)</p>
+                                               </a>
+                                          </div>
+                                        </div>
+                            </div>
+                        </div>
+
+        </div>
+</body>
+{% endblock content %}
+</html>

@@ -1,0 +1,183 @@
+ <!DOCTYPE html>
+ {% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Website Development">
+    <meta name="author" content="Talent Online">
+    <meta name="keywords" content="Website Development">
+
+    {% for ss in site_sett %}
+    <title>{{ ss.Firm }}</title>
+    {% endfor %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/bootstrap.min.css' %}">
+        <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/fonts/line-icons.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets1/img/t_favicon.png' %}"/>
+
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/owl.theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/magnific-popup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/nivo-lightbox.css' %}">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/animate.css' %}">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/main.css' %}">
+
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets1/css/responsive.css' %}">
+    <!-- Plugins CSS -->
+
+    <!-- Theme CSS -->
+
+  </head>
+  <body>
+
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a href="{% url 'home' %}" class="navbar-brand">
+
+             {% for ss in site_sett %}
+            <img src="{{ ss.FirmLogo.url }}" alt="Logo"></a>
+               {% endfor %}
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="lni-menu"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}"> Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog' %}"> Blogs </a>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'distance_edu'%}">Distance Programs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contactus' %}">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'cpanel'%}">Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar End -->
+         </header>
+
+
+    <!-- Header Area wrapper End -->
+
+       {% block content %}
+
+          <!-- Content Goes here -->
+
+        {% endblock content %}
+
+
+    <!-- Footer Section Start -->
+    <footer id="footer" class="footer-area section-padding">
+      <div class="container">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+              <div class="widget">
+                <h3 class="footer-logo"><img src="{% static 'assets1/img/logo2.png' %}" alt=""></h3>
+                <div class="textwidget">
+                  <p>Showing the inspiring marketing strategies that you use for your own brand, you can have an effective place in your audience’s mind.</p>
+                </div>
+                <div class="social-icon">
+                  <a class="facebook" href="#"><i class="lni-facebook-filled"></i></a>
+                  <a class="twitter" href="#"><i class="lni-twitter-filled"></i></a>
+                  <a class="instagram" href="#"><i class="lni-instagram-filled"></i></a>
+                  <a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">Products</h3>
+              <ul class="footer-link">
+                <li><a href="#">Tracking</a></li>
+                <li><a href="#">Application</a></li>
+                <li><a href="#">Resource Planning</a></li>
+                <li><a href="#">Enterprise</a></li>           
+                <li><a href="#">Employee Management</a></li>           
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">Resources</h3>
+              <ul class="footer-link">
+                <li><a href="#">Network Services</a></li>
+                <li><a href="#">Refurnished Laptops</a></li>
+                <li><a href="#">SMS Services</a></li>
+
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="footer-titel">Contact</h3>
+              <ul class="address">
+                <li>
+                  <a href="#"><i class="lni-map-marker"></i> {{ cont_us.Address1 }} - <br> {{ cont_us.Address2 }}, {{ cont_us.Distt }}( {{ cont_us.pin }} )</a>
+                </li>
+                <li>
+                  <a href="#"><i class="lni-phone-handset"></i> P: {{ cont_us.Phone }}</a>
+                </li>
+                <li>
+                  <a href="#"><i class="lni-envelope"></i> E: {{ cont_us.Email }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>  
+      </div> 
+      <div id="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright-content">
+                <p>Copyright © 2020 <a rel="nofollow" href="#">Sushil Sharma Team</a> All Right Reserved</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>   
+    </footer> 
+    <!-- Footer Section End -->
+
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+    	<i class="lni-arrow-up"></i>
+    </a>
+        <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'assets1/js/jquery-min.js' %}"></script>
+    <script src="{% static 'assets1/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets1/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets1/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets1/js/wow.js' %}"></script>
+    <script src="{% static 'assets1/js/jquery.nav.js' %}"></script>
+    <script src="{% static 'assets1/js/scrolling-nav.js' %}"></script>
+    <script src="{% static 'assets1/js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'assets1/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'assets1/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets1/js/main.js' %}"></script>
+      
+  </body>
+</html>

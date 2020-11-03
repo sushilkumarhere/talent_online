@@ -9,7 +9,6 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
-
 class UserRegister(admin.ModelAdmin):
     list_display = ('Name', 'Address', 'ContactNo', 'Email', 'comment')
     search_fields = ('Name', 'Address', 'ContactNo', 'Email', 'comment')

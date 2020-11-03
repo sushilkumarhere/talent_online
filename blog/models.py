@@ -84,7 +84,5 @@ class registrations(models.Model):
 
 class services(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
     content = models.TextField()
     image = models.ImageField(upload_to='images/services/')
-

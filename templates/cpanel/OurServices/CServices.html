@@ -1,0 +1,46 @@
+{% extends "cpanel/AdminBase.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block mainblock %}
+<html>
+{% block content %}
+
+ <div class="col-md-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="d-flex align-items-center">
+					<h4 class="card-title">Our Services</h4>
+                    <a href="{% url 'CreateService' %}" class="btn btn-primary btn-round ml-auto" type="button" data-toggle="tooltip"
+                        data-placement="top" title="Add Services"><i class="fa fa-plus"></i>Add New</a>
+                </div>
+		    </div>
+			    <div class="card-body">
+
+                    <div class="card-deck">
+                        {% for service in cr %}
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="{{ service.image.url }}">
+                                <div class="card-body">
+                                    <h1 class="card-title">{{ service.title }}</h1>
+
+                                    <p class="card-text">{{ service.content }}</p>
+                                    <div class="card-footer bg-transparent border-dark">
+                                        <h2 class="card-title">{{service.Eligibility}} </h2>
+                                       <center>
+                                           <a href="{% url 'ServiceUpdate' service.id %}" class="btn btn-warning" id = '{{service.id}}'>edit</a>
+                                           <a href="{% url 'ServiceDelete' service.id %}" class="btn btn-danger"  id = '{{service.id}}'>delete</a>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>
+
+{% endblock %}
+</body>
+</html>
+{% endblock %}
