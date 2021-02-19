@@ -79,10 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        # 'USER': 'root',
+        # 'PASSWORD': '',
+        #  'HOST': 'localhost',
+        # 'PORT': '3306'
     }
 }
 
@@ -138,4 +138,3 @@ EMAIL_HOST_PASSWORD = '1980@poonum'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-

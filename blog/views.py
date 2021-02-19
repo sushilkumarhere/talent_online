@@ -98,6 +98,7 @@ def registrations2(request):
     return render(request, 'register.html', choices)
 
 
+
 # this is the Distance Course Page View
 def distance_edus(request):
     site_sett = SiteSetting.objects.all()
@@ -302,8 +303,10 @@ def ServicesDelete(request, service_id):
     ss_id = int(service_id)
     try:
         s = services.objects.get(id=ss_id)  # Service is a  Model
+
     except Setting.DoesNotExist:
         return redirect('Services')
+
     s.delete()
     return redirect('Services')
 
@@ -350,3 +353,6 @@ def test(request):
     return render(request, 'test.html')
 
 
+def update_user_profile(request):
+
+    return render(request, 'cpanel/Users/user_profile.html')

@@ -83,8 +83,8 @@
 										<div class="user-box">
 											<div class="avatar-lg"><img src="{% static 'AdminPanel/assets/img/avtar.png' %}" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>Hi,Mr. {{ user.get_username | default:"Admin" }}</h4>
-												<p class="text-muted">{{ user.get_first_name | default:"Admin@gmail.com" }}</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<h4>Hi,{{ user.get_username | default:"Admin" }}</h4>
+												<p class="text-muted">{{ request.user.email | default:"Admin@gmail.com" }}</p><a href="{% url 'userprofile'%}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
 									</li>

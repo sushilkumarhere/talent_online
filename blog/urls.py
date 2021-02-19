@@ -38,6 +38,7 @@ urlpatterns = [
     path('cpanel/contactusUpdate/<int:contus_id>', views.ContusUpdate, name='UpdateContUs'),
     path('cpanel/UserLeads/', views.UserLeads, name='UserLeads'),
     path('cpanel/User/', views.NewUsers, name='NewUser'),
+    path('cpanel/UpdateUser/', views.update_user_profile, name='userprofile'),
 
 
 

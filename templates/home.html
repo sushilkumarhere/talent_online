@@ -44,32 +44,6 @@
 
 <!-- Slider End -->
 <!-- Hero Area Start -->
-      <div id="hero-area" class="hero-area-bg">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-              <div class="contents">
-                <h4 class="head-title">First, solve the problem. Then, write the code.</h4>
-                <p>
-                  {% for ss in site_sett %}
-                  {{ ss.main_slider_mission }}
-                  {% endfor %}
-                </p>
-                <div class="header-button">
-                  <a rel="nofollow" href="{% url 'register' %}" class="btn btn-common">Register Here</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-              <div class="intro-img">
-                {% for ss in site_sett %}
-                <img class="img-fluid" src="{{ ss.main_slider_img.url }}" alt="">
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- Hero Area End -->
 
