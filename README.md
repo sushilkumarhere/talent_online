@@ -1,4 +1,4 @@
-# Django_University
+# TALENT_Online
 A Education  application made on Django 2.
 
 ![ezgif com-video-to-gif](http://talent.pythonanywhere.com/about/)
