@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-content-center align-items-center">
+  <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+    <h1>Learning Today,<br>To Lead Tomorrow</h1>
+    <h2>We are team of talented designers making websites with Bootstrap and React</h2>
+    <a href="#" class="btn-get-started">Get Started</a>
+  </div>
+</section><!-- End Hero -->
+
+<main id="main">
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+          <img src="{% static "assets/img/about_distance.png" %}" class="img-fluid" alt="Distance Education">
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+          <h5>"दूरस्थ शिक्षा, शिक्षा की वह प्रणाली है जिसमें शिक्षक तथा शिक्षु को स्थान-विशेष अथवा समय-विशेष पर मौजूद
+            होने की आवश्यकता नहीं होती।"</h5>
+
+          <ul>
+            <li><i class="bi bi-check-circle"></i>Distance learning is by definition carried out through institutions;
+              it is not self-study or a nonacademic learning environment.</li>
+            <li><i class="bi bi-check-circle"></i>Geographic separation is inherent in distance learning, and time may
+              also separate students and teachers.</li>
+            <li><i class="bi bi-check-circle"></i>Interactive telecommunications connect individuals within a learning
+              group and with the teacher</li>
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+
+
+  <!-- ======= Popular Services Section ======= -->
+  <section id="popular-courses" class="courses">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Services</h2>
+        <p>
+        <h3>Popular Services </h3>
+        </p>
+      </div>
+
+      <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        {% for ser in cr %}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+
+          <div class="course-item">
+            <img src="{{ ser.image.url }}" class="img-fluid" alt="...">
+            <div class="course-content">
+
+              <h3><a href="#">{{ ser.title }}</a></h3>
+              <p>{{ ser.content |slice:":1000" }}</p>
+
+            </div>
+          </div>
+        </div> <!-- End Course Item-->
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </section><!-- End Popular Courses Section -->
+
+
+
+</main><!-- End #main -->
+
+
+{% endblock content %}

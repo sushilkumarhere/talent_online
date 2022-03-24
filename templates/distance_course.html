@@ -1,0 +1,44 @@
+<html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <br><br>
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs" data-aos="fade-in">
+            <div class="container">
+                <h2>Distance Learning Course</h2>
+                <p>Distance Education “is a process to create and provide access to learning when the source of
+                    information and the learners are separated by time and distance, or both.” In other words,
+                    distance learning is the process of creating an educational experience of equal qualitative
+                    value for the learner to best suit their needs outside the classroom </p>
+            </div>
+        </div><!-- End Breadcrumbs -->
+
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    {% for book in cr %}
+                    <div class="card" style="width: 17rem;">
+                        <img class="card-img-top" src="{{ book.CourseImage.url }}">                        
+                        <div class="card-body">
+                            <div class="card-title"> {{ book.CourseName }}</div>                           
+                            <a href="{% url 'courseDetail' book.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                            <br> <br>
+                            <div class="card-footer bg-transparent border-dark"> </div>
+                            <a href="{% url 'register' %}" class="btn btn-success" id='{{book.id}}'>Enroll  </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>        
+        </section><!-- End Pricing Section -->
+
+    </main><!-- End #main -->
+
+
+</body>
+{% endblock %}
+</html>

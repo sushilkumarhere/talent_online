@@ -1,0 +1,23 @@
+<HTML>
+    {% extends 'base.html' %}
+    {% block content %}
+    <BODY>
+    <br><br><br><br>
+    <div class="jumbotron" ></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 card mb-4  mt-3 left  top">
+          <div class="card-body">
+            <h1>{% block title %} Programe Name : {{ ser.CourseName }} {% endblock title %}</h1>
+            <p class=" text-muted">{{ ser.CourseDetail }}</p>
+            <p class="card-text "> Eligibility : {{ ser.Eligibility | safe }}</p>
+            <p class="card-text "> Annual Fee : {{ ser.AnnualFee | safe }}</p>
+            
+            <img src="{{ ser.CourseImage.url }}" class="img-responsive" style="width: 80%; float: left; margin-right: 10px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+    </BODY>
+    </HTML>
