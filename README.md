@@ -1,5 +1,5 @@
 # Django_University
-A Education  application made on Django 2.
+A Educational application made on Django 
 
 ![ezgif com-video-to-gif](http://talent.pythonanywhere.com/about/)
 
